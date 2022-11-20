@@ -1,34 +1,39 @@
-public class Main {
-    private static java.lang.String String;
-    private static Object cout;
+import java.util.Scanner;
 
-    public static void main(String[] args) {
-        //Nama : Zesica Fitriani
-        //NPM : 22552011217
-        // Kelas : TIFPK22
-        /// soal no 1
-        /////0  1  2 3 4  5  6
-        int[] intArray = {10,35,-15,7,45,1,-22,110,-80,20,120,87,5,4,13};
+public class Main
+{
+    public static void main(String[] args)
+    {
+        int tot, i, j, count, small, index=0, x;
+        Scanner scan = new Scanner(System.in);
 
-        for(int lastUnsortedIndex = intArray.length-1; lastUnsortedIndex > 0; lastUnsortedIndex--){
-            for(int i = 0; i < lastUnsortedIndex; i++){
-                if(intArray[i] > intArray[i + 1]){
-                    swap(intArray, i , i+ 1);
+        System.out.print("Enter the Size of Array: ");
+        tot = scan.nextInt();
+        int[] arr = new int[tot];
+
+        System.out.print("Enter " +tot+ " Elements for the Array: ");
+        for(i=0; i<tot; i++)
+            arr[i] = scan.nextInt();
+
+        for(i=0; i<(tot-1); i++) {
+            count=0;
+            small = arr[i];
+            for(j=(i+1); j<tot; j++) {
+                if(small>arr[j]) {
+                    small = arr[j];
+                    count++;
+                    index = j;
                 }
             }
-        }
-        for( int i = 0; i < intArray.length; i++){
-            System.out.println(intArray[i]);
-        }
-    }
-    public static void swap (int[] array, int i, int j){
-        if(i == j){
-            return;
+            if(count!=0){
+                x = arr[i];
+                arr[i] = small;
+                arr[index] = x;
+            }
         }
 
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+        System.out.println("\nThe new sorted array is: ");
+        for(i=0; i<tot; i++)
+            System.out.print(arr[i]+ " ");
     }
-
 }
